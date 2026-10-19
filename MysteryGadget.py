@@ -68,8 +68,9 @@ class MysteryGadget:
 
         # 4. Display idle speed and RPM
         self._display.clear()
-        self._display.showText(f"RPM: {self.IDLE_RPM}".ljust(16), row=0, col=0)
-        self._display.showText("Speed: 0 mph".ljust(16), row=1, col=0)
+        self._display.showText(f"RPM: {self.IDLE_RPM}", row=0, col=0)
+        self._display.showText("Speed: 0 mph", row=1, col=0)
+
 
         # 5. Idle indicator on light strip (single dim green pixel)
         num_leds = getattr(self._light_strip, "_numleds", 8)
@@ -98,7 +99,7 @@ class MysteryGadget:
         # 3. Update display
         self._display.clear()
         self._display.showText("Engine Stopped".center(16), row=0, col=0)
-        self._display.showText("".ljust(16), row=1, col=0)
+        self._display.showText(" " * 16, row=1, col=0)
 
         Log.i("MysteryGadget: Engine stopped.")
 
@@ -157,14 +158,15 @@ class MysteryGadget:
 
         # 1. Calculate RPM and Speed
         rpm = int(self.IDLE_RPM + ratio * (self.MAX_RPM - self.IDLE_RPM))
-        speed = int(ratio * self.MAX_SPEED)
+        speed = int(ratio * 100)
 
         # 2. Update LCD Display with RPM and Speed
-        self._display.showText(f"RPM: {rpm}".ljust(16), row=0, col=0)
-        self._display.showText(f"Speed: {speed} mph".ljust(16), row=1, col=0)
+        self._display.showText((f"RPM: {rpm}" + " " * 16)[:16], row=0, col=0)
+        self._display.showText((f"Speed: {speed}%" + " " * 16)[:16], row=1, col=0)
+        
 
         # 3. Update Buzzer pitch based on RPM (engine rev sound: 60Hz - 360Hz)
-        sound_freq = int(60 + ratio * 300)
+        sound_freq = int(3000 + ratio * 500)
         self._buzzer.play(sound_freq)
 
         # 4. Update LightStrip Tachometer visualization
