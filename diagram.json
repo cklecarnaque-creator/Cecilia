@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "author": "Cecilia",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-pi-pico", "id": "pico", "top": 0, "left": 0, "attrs": { "env": "micropython-20231227-v1.22.0" } },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -150, "left": 150, "attrs": { "pins": "i2c" } },
+    { "type": "wokwi-led-ring", "id": "ring1", "top": -170, "left": -200, "attrs": { "pixels": "8" } },
+    { "type": "wokwi-buzzer", "id": "bz1", "top": 200, "left": 200, "attrs": { "volume": "0.3" } },
+    { "type": "wokwi-pushbutton", "id": "btnPrev", "top": 60, "left": -230, "attrs": { "color": "blue", "label": "PREV" } },
+    { "type": "wokwi-pushbutton", "id": "btnNext", "top": 130, "left": -230, "attrs": { "color": "green", "label": "NEXT" } },
+    { "type": "wokwi-pushbutton", "id": "btnStatus", "top": 200, "left": -230, "attrs": { "color": "red", "label": "STATUS" } }
+  ],
+  "connections": [
+    [ "lcd1:SDA", "pico:GP0", "green", [] ],
+    [ "lcd1:SCL", "pico:GP1", "blue", [] ],
+    [ "lcd1:VCC", "pico:VBUS", "red", [] ],
+    [ "lcd1:GND", "pico:GND.8", "black", [] ],
+    [ "ring1:DIN", "pico:GP2", "orange", [] ],
+    [ "ring1:VCC", "pico:VBUS", "red", [] ],
+    [ "ring1:GND", "pico:GND.1", "black", [] ],
+    [ "bz1:2", "pico:GP16", "purple", [] ],
+    [ "bz1:1", "pico:GND.5", "black", [] ],
+    [ "btnPrev:1.r", "pico:GP10", "blue", [] ],
+    [ "btnPrev:2.l", "pico:GND.3", "black", [] ],
+    [ "btnNext:1.r", "pico:GP11", "green", [] ],
+    [ "btnNext:2.l", "pico:GND.3", "black", [] ],
+    [ "btnStatus:1.r", "pico:GP12", "red", [] ],
+    [ "btnStatus:2.l", "pico:GND.4", "black", [] ]
+  ],
+  "dependencies": {}
+}
