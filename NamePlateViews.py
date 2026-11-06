@@ -22,7 +22,7 @@ class NamePlateView:
 
     Examples:
     ---------
-    1. view.showEmployee("Dr. Sengupta", "Professor")
+    1. view.showEmployee("Ms. Cecilia L", "Professor")
     """
 
     def __init__(self, lcd):
