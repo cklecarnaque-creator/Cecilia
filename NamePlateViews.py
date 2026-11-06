@@ -71,6 +71,7 @@ class SoundEffects:
     """
     **SoundEffects** - short sounds for the nameplate.
     Rising tones for "next", falling tones for "previous".
+    Tones are around 2500 Hz, where this buzzer sounds loudest.
 
     Parameters:
     ----------
@@ -82,18 +83,18 @@ class SoundEffects:
         self._buzzer = buzzer
 
     def playNext(self):
-        self._melody([523, 784])         # C5 -> G5 (going up)
+        self._melody([2300, 2600])       # low -> high (going up)
 
     def playPrevious(self):
-        self._melody([784, 523])         # G5 -> C5 (going down)
+        self._melody([2600, 2300])       # high -> low (going down)
 
     def playStatusChange(self):
-        self._melody([659, 659, 880])    # little "ding-ding-ding"
+        self._melody([2500, 2500, 2500]) # little "ding-ding-ding"
 
     def _melody(self, tones):
         for t in tones:
             self._buzzer.play(t)
-            time.sleep(0.07)
+            time.sleep(0.1)
         self._buzzer.stop()
 
 

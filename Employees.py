@@ -38,7 +38,7 @@ class Employee:
 
     Examples:
     ---------
-    1. e = Employee("Ana Lopez", "305-348-1111", "Advisor")
+    1. e = Employee("Mr. Louis T", "305-348-1111", "Advisor")
     2. e.cycleAvailability()   # Available -> Away
     """
 
@@ -226,7 +226,7 @@ class Administrator(Employee):
 
 
 if __name__ == "__main__":
-    f = Faculty("Dr. Sengupta", "305-348-0001", "Professor", ["COP 4521"], "MW 2-4pm")
+    f = Faculty("Ms. Cecilia L", "305-348-0001", "Professor", ["COP 4521"], "MW 2-4pm")
     assert f.getAvailability() == AVAILABLE
     f.cycleAvailability()
     assert f.getAvailability() == AWAY
@@ -234,7 +234,7 @@ if __name__ == "__main__":
 
     cal = Calendar()
     cal.addBlock(0, 24 * 60, BUSY)
-    a = Administrator("Maria Diaz", "305-348-0002", "Director", cal)
+    a = Administrator("Ms. Valerie W", "305-348-0002", "Director", cal)
     a.cycleAvailability()
     assert a.getAvailability() == BUSY
     Log.i("Testing complete - Employees.py checks passed")
