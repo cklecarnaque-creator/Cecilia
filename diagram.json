@@ -1,0 +1,202 @@
+{
+  "version": 1,
+  "author": "Cecilia",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": {
+        "env": "micropython-20231227-v1.22.0"
+      }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -190,
+      "left": -40,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -230,
+      "left": -330,
+      "attrs": {
+        "pixels": "8"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "sonar1",
+      "top": -60,
+      "left": -360,
+      "attrs": {
+        "distance": "100"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bzKiosk",
+      "top": 200,
+      "left": -330,
+      "attrs": {
+        "volume": "0.3"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnGreen",
+      "top": 90,
+      "left": -240,
+      "attrs": {
+        "color": "green",
+        "label": "HAPPY",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnRed",
+      "top": 160,
+      "left": -240,
+      "attrs": {
+        "color": "red",
+        "label": "UNHAPPY",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnManager",
+      "top": 230,
+      "left": -240,
+      "attrs": {
+        "color": "blue",
+        "label": "MANAGER",
+        "bounce": "0"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "lcd1:SDA",
+      "pico:GP0",
+      "green",
+      []
+    ],
+    [
+      "lcd1:SCL",
+      "pico:GP1",
+      "blue",
+      []
+    ],
+    [
+      "lcd1:VCC",
+      "pico:VBUS",
+      "red",
+      []
+    ],
+    [
+      "lcd1:GND",
+      "pico:GND.8",
+      "black",
+      []
+    ],
+    [
+      "ring1:DIN",
+      "pico:GP2",
+      "orange",
+      []
+    ],
+    [
+      "ring1:VCC",
+      "pico:VBUS",
+      "red",
+      []
+    ],
+    [
+      "ring1:GND",
+      "pico:GND.1",
+      "black",
+      []
+    ],
+    [
+      "sonar1:VCC",
+      "pico:VBUS",
+      "red",
+      []
+    ],
+    [
+      "sonar1:GND",
+      "pico:GND.4",
+      "black",
+      []
+    ],
+    [
+      "sonar1:TRIG",
+      "pico:GP15",
+      "violet",
+      []
+    ],
+    [
+      "sonar1:ECHO",
+      "pico:GP14",
+      "gold",
+      []
+    ],
+    [
+      "bzKiosk:2",
+      "pico:GP16",
+      "purple",
+      []
+    ],
+    [
+      "bzKiosk:1",
+      "pico:GND.5",
+      "black",
+      []
+    ],
+    [
+      "btnGreen:1.r",
+      "pico:GP10",
+      "green",
+      []
+    ],
+    [
+      "btnGreen:2.l",
+      "pico:GND.3",
+      "black",
+      []
+    ],
+    [
+      "btnRed:1.r",
+      "pico:GP11",
+      "red",
+      []
+    ],
+    [
+      "btnRed:2.l",
+      "pico:GND.3",
+      "black",
+      []
+    ],
+    [
+      "btnManager:1.r",
+      "pico:GP12",
+      "blue",
+      []
+    ],
+    [
+      "btnManager:2.l",
+      "pico:GND.4",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
